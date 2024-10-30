@@ -1,0 +1,27 @@
+.dog-card img {
+    height: 100%;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+    margin: auto;
+}
+
+.dog-card {
+    display: block;
+    margin: 10px auto;
+    width: 25%;
+    border: 2px black solid;
+    height: 100px;
+    text-align: right;
+    background: white;
+    line-height: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dog-card h2 {
+    text-decoration: underline;
+    font-size: 3em;
+}

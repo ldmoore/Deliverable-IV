@@ -3,19 +3,44 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: lightyellow;
+  --foreground: black;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.dog-image {
+  text-align: center;
+}
+
+.dog-image img {
+  margin: 0 auto;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.dog-image button {
+  margin: 0 auto;
+  display: block;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.dog-image h1 {
+  font-size: 2em;
+}
+
+.dog-image a {
+  text-decoration: underline;;
 }

@@ -1,0 +1,23 @@
+{
+    "1": {
+        "id": "1",
+        "name": "Ben",
+        "breed": "Goldendoodle",
+        "img": "/goldendoodle.png",
+        "description": "A cute mix of a golden retriever and a poodle!"
+    },
+    "2": {
+        "id": "2",
+        "name": "Blue",
+        "breed": "Great Dane",
+        "img": "/greatdane.webp",
+        "description": "Big dog!"
+    }, 
+    "3": {
+        "id": "3",
+        "breed": "Boxer",
+        "name": "Figo",
+        "img": "/boxer.webp",
+        "description": "Dog, and friendly!"
+    }
+}
