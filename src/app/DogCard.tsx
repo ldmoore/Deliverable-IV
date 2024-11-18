@@ -4,7 +4,7 @@ export default function DogCard({ dog } : { dog: { id: string, breed: string, na
     return (
         <div className="dog-card">
             <img src={dog.img}></img>
-            <h2><a href={`/dogs/${dog.id}`}>{dog.name}</a></h2>
+            <h2><a href={`/adoptable/${dog.id}`}>{dog.name}</a></h2>
         </div>
     );
 }

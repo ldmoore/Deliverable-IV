@@ -1,41 +1,40 @@
-import Image from "next/image";
+import { createClient } from '@supabase/supabase-js'
 import DogCard from "./DogCard";
-const { breeds } = require("./dogInfo.json");
 
-let storedDogs: object[] = [];
+const supabase = createClient(
+  process.env.SUPABASE_URL || '',
+  process.env.SUPABASE_ANON_KEY || ''
+)
 
-export async function generateStaticParams() {
-  const response = await fetch('https://dog.ceo/api/breeds/list/all');
-  const data = await response.json();
-  const breeds = Object.keys(data.message);
+export default async function Home() {
+  let storedDogs: object[] = [];
+  
+  const { data, error } = await supabase
+    .from('dogs')
+    .select();
 
-  for (let i : number = 0; i < 5; i++) {
-    const breed = breeds[Math.floor(Math.random() * breeds.length)];
-    const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
-    const data = await response.json();
+    //@ts-ignore
+    for (let i : number = 0; i < data.length; i++) {
+      //@ts-ignore
+        const dog = data[i];
+        storedDogs.push({
+            id: dog.id,
+            name: dog.name,
+            breed: dog.breed,
+            img: dog.image,
+            description: dog.description
+        });
+    }
 
-    storedDogs.push({
-      "id": i,
-      "name": "Dog",
-      "breed": breed,
-      "img": data.message,
-      "description": "A cute dog!"
-    });
-  }
-
-  return storedDogs;
-}
-
-export default function Home() {
   return (
     <div>
       <h1>Dog Adoption Arena</h1>
-      <p>Click on a dog to adopt!</p>
+      <p>Click on a dog to adopt or <a href="newDog">add a new dog for adoption</a>!</p>
       <div>
-        {breeds.length > 0 && (
+      {storedDogs.length > 0 && (
           <div className="dog-list">
-          {breeds.map((dog : string) => (
-            <p><a href={`/dogs/${dog}`}>{dog}</a></p>
+          {storedDogs.map((dog : any) => (
+            <DogCard dog={dog} key={dog.id} />
           ))}
           </div>
         )}
@@ -43,3 +42,4 @@ export default function Home() {
     </div>
   );
 }
+
